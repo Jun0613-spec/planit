@@ -1,36 +1,76 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# About
 
-## Getting Started
+Planit is Full stack project & task management web application using with React, Next.js, Typescript, NextAuth, TailwindCSS, Drizzle ORM, PostgreSQL, React-query, Hono.js, Cloudinary, Zustand,
 
-First, run the development server:
+### Key Technologies
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+```
+Frontend: React, Next.js, TypeScript, TailwindCSS, React Query
+Backend: Hono.js, Typescript
+Database: Drizzle ORM, PostgreSQL
+Auth: NextAuth
+State Management: Zustand
+Image Hosting: Cloudinary
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### Default workspace join url
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```
 
-## Learn More
+### Database ORM
 
-To learn more about Next.js, take a look at the following resources:
+```
+![Planit ORM](./public/planit.png)
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### Features
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+```
+- Workspaces: Create, edit, delete, reset join codes, and join workspaces.
+- Projects: Add, modify, and delete projects within each workspace.
+- Tasks: Create, update, and remove tasks with a Kanban board view.
+- User Management: Update user details and manage account settings.
+- File Management: Seamless image upload and storage.
+```
 
-## Deploy on Vercel
+### Install packages
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+```shell
+npm istall
+```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+### Setup .env file
+
+```js
+NEXT_PUBLIC_APP_URL=http://localhost:3000
+
+AUTH_SECRET="AUTH SECRET"
+
+NEXT_PUBLIC_DATABASE_URL=
+
+AUTH_GITHUB_ID=
+AUTH_GITHUB_SECRET=
+
+AUTH_GOOGLE_ID=
+AUTH_GOOGLE_SECRET=
+
+NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME=
+NEXT_PUBLIC_CLOUDINARY_API_KEY=
+NEXT_PUBLIC_CLOUDINARY_API_SECRET=
+```
+
+### Start the app
+
+```shell
+npm run dev
+```
+
+## Available commands
+
+Running commands with npm `npm run [command]`
+
+| command | description                              |
+| :------ | :--------------------------------------- |
+| `dev`   | Starts a development instance of the app |
