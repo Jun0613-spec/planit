@@ -15,7 +15,7 @@ const authMiddleware = auth((req) => {
 
   if (nextUrl.pathname.startsWith(apiAuthPrefix)) return;
 
-  if (!isLoggedIn && nextUrl.pathname === "/") {
+  if (!isLoggedIn && nextUrl.pathname === DEFAULT_LOGIN_REDIRECT) {
     return NextResponse.redirect(new URL("/landing", nextUrl));
   }
 
