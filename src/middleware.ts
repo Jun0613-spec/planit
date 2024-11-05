@@ -19,6 +19,15 @@ const authMiddleware = auth((req) => {
     return NextResponse.redirect(new URL("/landing", nextUrl));
   }
 
+  if (
+    !isLoggedIn &&
+    (nextUrl.pathname === "/sign-in" ||
+      nextUrl.pathname === "/sign-up" ||
+      nextUrl.pathname === "/landing")
+  ) {
+    return;
+  }
+
   if (isLoggedIn && nextUrl.pathname === "/landing") {
     return NextResponse.redirect(new URL(DEFAULT_LOGIN_REDIRECT, nextUrl));
   }
