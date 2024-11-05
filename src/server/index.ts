@@ -22,9 +22,10 @@ cloudinary.config({
 });
 
 const getAuthConfig = (): AuthConfig => {
-  //@ts-ignore
+  // Use @ts-expect-error instead of @ts-ignore
+  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+  // @ts-expect-error
   return {
-    secret: process.env.AUTH_SECRET,
     ...authConfig
   };
 };
