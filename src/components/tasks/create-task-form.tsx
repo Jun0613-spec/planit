@@ -131,7 +131,6 @@ const CreateTaskForm = ({
                 render={({ field }) => (
                   <FormItem>
                     <FormLabel>Assignee</FormLabel>
-
                     <Select
                       defaultValue={field.value}
                       onValueChange={field.onChange}
@@ -141,7 +140,6 @@ const CreateTaskForm = ({
                           <SelectValue placeholder="Select assignee" />
                         </SelectTrigger>
                       </FormControl>
-                      <FormMessage />
                       <SelectContent>
                         {memberOptions.map((member) => (
                           <SelectItem key={member.id} value={member.id}>
@@ -168,7 +166,6 @@ const CreateTaskForm = ({
                 render={({ field }) => (
                   <FormItem>
                     <FormLabel>Status</FormLabel>
-
                     <Select
                       defaultValue={field.value}
                       onValueChange={field.onChange}
@@ -178,7 +175,6 @@ const CreateTaskForm = ({
                           <SelectValue placeholder="Select status" />
                         </SelectTrigger>
                       </FormControl>
-                      <FormMessage />
                       <SelectContent>
                         <SelectItem value={TaskStatus.BACKLOG}>
                           Backlog
@@ -213,7 +209,6 @@ const CreateTaskForm = ({
                           <SelectValue placeholder="Select project" />
                         </SelectTrigger>
                       </FormControl>
-                      <FormMessage />
                       <SelectContent>
                         {projectOptions.map((project) => (
                           <SelectItem key={project.id} value={project.id}>

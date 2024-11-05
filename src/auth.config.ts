@@ -19,7 +19,7 @@ export default {
     Credentials({
       credentials: {
         email: { label: "Email", type: "email" },
-        pasword: { label: "Password", type: "password" }
+        password: { label: "Password", type: "password" }
       },
       async authorize(credentials) {
         const validatedFields = signinSchema.safeParse(credentials);
@@ -54,7 +54,6 @@ export default {
   session: {
     strategy: "jwt"
   },
-  secret: process.env.AUTH_SECRET,
   callbacks: {
     session({ session, token }) {
       if (token.id) session.user.id = token.id;

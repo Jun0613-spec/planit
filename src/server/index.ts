@@ -1,4 +1,4 @@
-import { Hono } from "hono";
+import { Context, Hono } from "hono";
 import { handle } from "hono/vercel";
 import { AuthConfig, initAuthConfig } from "@hono/auth-js";
 
@@ -13,7 +13,7 @@ import { v2 as cloudinary } from "cloudinary";
 
 import authConfig from "@/auth.config";
 
-export const runtime = "edge";
+export const runtime = "nodejs";
 
 cloudinary.config({
   cloud_name: process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME,
@@ -21,12 +21,10 @@ cloudinary.config({
   api_secret: process.env.NEXT_PUBLIC_CLOUDINARY_API_SECRET
 });
 
-const getAuthConfig = (): AuthConfig => {
-  // Use @ts-expect-error instead of @ts-ignore
-  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-  // @ts-expect-error
+const getAuthConfig = (c: Context): AuthConfig => {
   return {
-    ...authConfig
+    secret: c.env.AUTH_SECRET,
+    ...(authConfig as AuthConfig)
   };
 };
 

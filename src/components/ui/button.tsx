@@ -12,7 +12,7 @@ const buttonVariants = cva(
         destructive:
           "bg-gradient-to-b from-rose-600 to-rose-700 text-primary-foreground dark:text-foreground hover:from-rose-700 hover:to-rose-800 dark:from-rose-700 dark:to-rose-800 dark:hover:from-rose-800 dark:hover:to-rose-900 disabled:bg-rose-100 disabled:from-rose-100 disabled:to-rose-100 disabled:text-rose-300 dark:disabled:bg-rose-100 dark:disabled:from-rose-100 dark:disabled:to-rose-100 dark:disabled:text-rose-300",
         outline:
-          "border border-input bg-background hover:bg-accent hover:text-accent-foreground",
+          "border border-input bg-background hover:bg-accent hover:text-accent-foreground disabled:bg-neutral-100 disabled:text-neutral-300 dark:disabled:bg-neutral-600 dark:disabled:text-neutral-500",
         primary:
           "bg-gradient-to-b from-sky-600 to-sky-700 text-primary-foreground dark:from-sky-700 dark:to-sky-800 dark:text-foreground hover:from-sky-700 hover:to-sky-700 dark:hover:from-sky-800 dark:hover:to-sky-900 disabled:bg-sky-100 disabled:from-sky-100 disabled:to-sky-100 disabled:text-sky-300 dark:disabled:bg-sky-100 dark:disabled:from-sky-100 dark:disabled:to-sky-100 dark:disabled:text-sky-300",
         secondary:
