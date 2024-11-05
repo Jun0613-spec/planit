@@ -3,7 +3,6 @@ import { zValidator } from "@hono/zod-validator";
 import { verifyAuth } from "@hono/auth-js";
 import { and, desc, eq, gte, lt, lte, ne } from "drizzle-orm";
 import { endOfMonth, startOfMonth, subMonths } from "date-fns";
-
 import {
   createProjectSchema,
   getProjectsByWorkspaceSchema,
@@ -27,7 +26,8 @@ const app = new Hono()
 
       if (!authUserId) return c.json({ error: "Unauthorized" }, 401);
 
-      const { workspaceId } = c.req.valid("query");
+      const workspaceId =
+        c.req.valid("query").workspaceId || c.req.param("workspaceId");
 
       if (!workspaceId) return c.json({ error: "Missing workspaceId" }, 400);
 
@@ -327,7 +327,7 @@ const app = new Hono()
           )
           .execute();
 
-        if (!workspaceMember)
+        if (!workspaceMember.length)
           return c.json({ error: "No member found in this workspace" }, 403);
 
         let uploadedImage: string | undefined;

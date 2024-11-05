@@ -19,28 +19,27 @@ export default {
     Credentials({
       credentials: {
         email: { label: "Email", type: "email" },
-        password: { label: "Password", type: "password" }
+        pasword: { label: "Password", type: "password" }
       },
-
-      authorize: async (credentials) => {
+      async authorize(credentials) {
         const validatedFields = signinSchema.safeParse(credentials);
 
         if (!validatedFields.success) return null;
 
         const { email, password } = validatedFields.data;
 
-        const existingUser = await db
+        const query = await db
           .select()
           .from(users)
           .where(eq(users.email, email));
 
-        const user = existingUser[0];
+        const user = query[0];
 
-        if (!user || !user.password)
-          throw new Error("Invalid email or password.");
+        if (!user || !user.password) return null;
 
         const passwordsMatch = await bcrypt.compare(password, user.password);
-        if (!passwordsMatch) throw new Error("Invalid password.");
+
+        if (!passwordsMatch) return null;
 
         return user;
       }
@@ -49,30 +48,21 @@ export default {
     Google
   ],
   pages: {
-    error: "/auth/error"
+    signIn: "/sign-in",
+    error: "/sign-in"
   },
   session: {
     strategy: "jwt"
   },
+  secret: process.env.AUTH_SECRET,
   callbacks: {
     session({ session, token }) {
-      session.user.id = token.id;
+      if (token.id) session.user.id = token.id;
 
       return session;
     },
-    async jwt({ token, user, trigger, session }) {
-      if (user?.id) {
-        token.id = user.id;
-
-        token.exp = Math.floor(Date.now() / 1000) + 24 * 60 * 60;
-      }
-
-      if (trigger === "update" && session.user) {
-        token = {
-          ...token,
-          ...session.user
-        };
-      }
+    jwt({ token, user }) {
+      if (user) token.id = user.id;
 
       return token;
     }

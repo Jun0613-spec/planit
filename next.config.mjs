@@ -15,6 +15,10 @@ const nextConfig = {
         pathname: "/**"
       }
     ]
+  },
+  webpack: (config) => {
+    config.externals = [...config.externals, "bcrypt"];
+    return config;
   }
 };
 

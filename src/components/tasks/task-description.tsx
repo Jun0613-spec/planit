@@ -30,6 +30,7 @@ const TaskDescription = ({ task }: TaskDescriptionProps) => {
       }
     );
   };
+
   return (
     <div className="p-4 border rounded-lg">
       <div className="flex items-center justify-between">

@@ -1,5 +1,4 @@
-import { Hono, Context } from "hono";
-import { cors } from "hono/cors";
+import { Hono } from "hono";
 import { handle } from "hono/vercel";
 import { AuthConfig, initAuthConfig } from "@hono/auth-js";
 
@@ -10,9 +9,11 @@ import members from "@/server/routes/members";
 import projects from "@/server/routes/projects";
 import tasks from "@/server/routes/tasks";
 
+import { v2 as cloudinary } from "cloudinary";
+
 import authConfig from "@/auth.config";
 
-import { v2 as cloudinary } from "cloudinary";
+export const runtime = "edge";
 
 cloudinary.config({
   cloud_name: process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME,
@@ -20,23 +21,17 @@ cloudinary.config({
   api_secret: process.env.NEXT_PUBLIC_CLOUDINARY_API_SECRET
 });
 
-const getAuthConfig = (c: Context): AuthConfig => {
+const getAuthConfig = (): AuthConfig => {
+  //@ts-ignore
   return {
-    secret: c.env.AUTH_SECRET,
+    secret: process.env.AUTH_SECRET,
     ...authConfig
   };
 };
 
 const app = new Hono().basePath("/api");
 
-app.use(cors());
 app.use("*", initAuthConfig(getAuthConfig));
-
-app.get("/protected", async (c) => {
-  const auth = await c.get("authUser");
-
-  return c.json(auth);
-});
 
 const routes = app
   .route("/", auth)

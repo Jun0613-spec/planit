@@ -29,9 +29,10 @@ const UserButton = () => {
   if (!data) {
     return (
       <>
-        {" "}
         <p>User not found</p>
-        <button onClick={() => signOut()}>Sign out</button>
+        <Button variant="destructive" onClick={() => signOut()}>
+          Sign out
+        </Button>
       </>
     );
   }

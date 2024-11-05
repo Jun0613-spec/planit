@@ -16,7 +16,7 @@ export const useGetWorkspacePerformance = ({
   workspaceId
 }: useGetWorkspacePerformanceProps) => {
   const query = useQuery({
-    queryKey: ["workspace-performance", workspaceId],
+    queryKey: ["workspace_performance", workspaceId],
     queryFn: async () => {
       const response = await client.api.workspaces[":workspaceId"][
         "performance"

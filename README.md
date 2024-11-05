@@ -21,9 +21,7 @@ Image Hosting: Cloudinary
 
 ### Database ORM
 
-```
 ![Planit ORM](./public/planit.png)
-```
 
 ### Features
 

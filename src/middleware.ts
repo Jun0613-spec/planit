@@ -14,14 +14,6 @@ const authMiddleware = auth((req) => {
   const isAuthRoute = authRoutes.includes(nextUrl.pathname);
 
   if (nextUrl.pathname.startsWith(apiAuthPrefix)) return;
-  if (
-    nextUrl.pathname === "/auth/google" ||
-    nextUrl.pathname === "/auth/github" ||
-    nextUrl.pathname === "/auth/callback/google" ||
-    nextUrl.pathname === "/auth/callback/github"
-  ) {
-    return;
-  }
 
   if (!isLoggedIn && nextUrl.pathname === "/") {
     return NextResponse.redirect(new URL("/landing", nextUrl));

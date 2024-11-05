@@ -189,7 +189,7 @@ const app = new Hono()
       projectId,
       dueDate,
       assigneeId
-    } = c.req.valid("json");
+    } = await c.req.valid("json");
 
     try {
       const workspaceMember = await db

@@ -75,7 +75,7 @@ export const createProjectSchema = z.object({
       z.string().transform((value) => (value === "" ? undefined : value))
     ])
     .optional(),
-  workspaceId: z.string()
+  workspaceId: z.string().trim().min(1, "Workspace ID is required")
 });
 
 export const updateProjectSchema = z.object({
@@ -101,20 +101,20 @@ export const getTasksSchema = z.object({
 export const createTaskSchema = z.object({
   name: z.string().trim().min(1, "Minimum 1 character required"),
   status: z.nativeEnum(TaskStatus, { required_error: "Required" }),
-  workspaceId: z.string().trim().min(1, "Required"),
-  projectId: z.string().trim().min(1, "Required"),
+  workspaceId: z.string().trim().min(1),
+  projectId: z.string().trim().min(1),
   dueDate: z.coerce.date(),
-  assigneeId: z.string().trim().min(1, "Required"),
+  assigneeId: z.string().trim().min(1),
   description: z.string().optional()
 });
 
 export const updateTaskSchema = z.object({
   name: z.string().trim().min(1, "Minimum 1 character required"),
   status: z.nativeEnum(TaskStatus, { required_error: "Required" }),
-  workspaceId: z.string().trim().min(1, "Required"),
-  projectId: z.string().trim().min(1, "Required"),
+  workspaceId: z.string().trim().min(1),
+  projectId: z.string().trim().min(1),
   dueDate: z.coerce.date(),
-  assigneeId: z.string().trim().min(1, "Required"),
+  assigneeId: z.string().trim().min(1),
   description: z.string().optional()
 });
 
