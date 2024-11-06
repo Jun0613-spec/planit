@@ -1,6 +1,7 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { InferRequestType, InferResponseType } from "hono";
 import { toast } from "sonner";
+import { useRouter } from "next/navigation";
 
 import { client } from "@/lib/api";
 
@@ -17,6 +18,7 @@ type ResponseType = InferResponseType<
 
 export const useJoinWorkspace = () => {
   const queryClient = useQueryClient();
+  const router = useRouter();
 
   const mutation = useMutation<ResponseType, Error, RequestType>({
     mutationFn: async ({ json, param }) => {
@@ -37,6 +39,7 @@ export const useJoinWorkspace = () => {
       toast.success(`You have been joined to ${data.name}`);
       queryClient.invalidateQueries({ queryKey: ["workspaces"] });
       queryClient.invalidateQueries({ queryKey: ["workspace", data.id] });
+      router.refresh();
     },
     onError: (error) => {
       toast.error(error.message);
