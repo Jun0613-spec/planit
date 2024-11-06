@@ -6,6 +6,7 @@ import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import Image from "next/image";
 import { AlertTriangleIcon, ImageIcon } from "lucide-react";
+import { useRouter } from "next/navigation";
 
 import {
   Card,
@@ -43,6 +44,7 @@ interface EditUserProfileFormProps {
 }
 
 const EditUserProfileForm = ({ onCancel }: EditUserProfileFormProps) => {
+  const router = useRouter();
   const inputRef = useRef<HTMLInputElement>(null);
 
   const { data } = useGetUser();
@@ -75,6 +77,7 @@ const EditUserProfileForm = ({ onCancel }: EditUserProfileFormProps) => {
         onSuccess: async () => {
           form.reset();
           onCancel?.();
+          router.refresh();
         }
       }
     );
