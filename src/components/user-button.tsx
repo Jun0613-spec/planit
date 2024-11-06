@@ -50,7 +50,7 @@ const UserButton = () => {
           <AvatarImage
             alt={name || ""}
             src={image || ""}
-            className="hover:opacity-80"
+            className="hover:opacity-80 object-cover"
           />
           <AvatarFallback className="font-medium text-white bg-sky-500 dark:bg-sky-600 hover:bg-sky-500/80 dark:hover:bg-sky-600/80 flex items-center justify-center text-lg">
             {avatarFallback}
@@ -65,7 +65,11 @@ const UserButton = () => {
       >
         <div className="flex flex-col items-center justify-center gap-2 px-2.5 py-4">
           <Avatar className="size-14 transition">
-            <AvatarImage alt={name || "User Avatar"} src={image || ""} />
+            <AvatarImage
+              alt={name || "User Avatar"}
+              src={image || ""}
+              className="object-cover"
+            />
             <AvatarFallback className="font-medium text-white bg-sky-500 dark:bg-sky-600  flex items-center justify-center text-xl cursor-default">
               {avatarFallback}
             </AvatarFallback>
