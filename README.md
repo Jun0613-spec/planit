@@ -1,11 +1,11 @@
 # About
 
-Planit is Full stack project & task management web application using with React, Next.js, Typescript, NextAuth, TailwindCSS, Drizzle ORM, PostgreSQL, React-query, Hono.js, Cloudinary, Zustand,
+Planit is Full stack project & task management web application using with React, Next.js, Typescript, NextAuth, TailwindCSS, Drizzle ORM, PostgreSQL, React-query, Hono.js, Cloudinary, Zustand, Shadcn-ui
 
 ### Key Technologies
 
 ```
-Frontend: React, Next.js, TypeScript, TailwindCSS, React Query
+Frontend: React, Next.js, TypeScript, TailwindCSS, React Query, Shadcn-ui
 Backend: Hono.js, Typescript
 Database: Drizzle ORM, PostgreSQL
 Auth: NextAuth
