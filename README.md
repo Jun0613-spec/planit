@@ -16,7 +16,7 @@ Image Hosting: Cloudinary
 ### Default workspace join url
 
 ```
-
+planit-project.vercel.app/workspaces/7bb0f70c-c439-40f5-b3df-f5ed130cf209/join/O3qt9h
 ```
 
 ### Database ORM
