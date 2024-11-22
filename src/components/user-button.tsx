@@ -11,9 +11,9 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger
 } from "@/components/ui/dropdown-menu";
+import { Button } from "@/components/ui/button";
 
 import Loader from "./loader";
-import { Button } from "./ui/button";
 
 import { useGetUser } from "@/hooks/users/use-get-user";
 
