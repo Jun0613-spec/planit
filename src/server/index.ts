@@ -1,4 +1,4 @@
-import { Context, Hono } from "hono";
+import { Hono } from "hono";
 import { handle } from "hono/vercel";
 import { AuthConfig, initAuthConfig } from "@hono/auth-js";
 
@@ -21,9 +21,9 @@ cloudinary.config({
   api_secret: process.env.NEXT_PUBLIC_CLOUDINARY_API_SECRET
 });
 
-const getAuthConfig = (c: Context): AuthConfig => {
+const getAuthConfig = (): AuthConfig => {
   return {
-    secret: c.env.AUTH_SECRET,
+    secret: process.env.AUTH_SECRET,
     ...(authConfig as AuthConfig)
   };
 };
